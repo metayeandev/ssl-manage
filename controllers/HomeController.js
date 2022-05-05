@@ -18,7 +18,7 @@ exports.index = async (req, res, next) => {
 
         });
 
-        res.render('index', { title: 'Express' });
+        res.render('index', { title: 'Express', data: data });
     } catch (error) {
         console.log(error);
     }
