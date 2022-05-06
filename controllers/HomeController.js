@@ -3,11 +3,10 @@ const { exec } = require('node:child_process')
 
 exports.index = async (req, res, next) => {
     try {
-
-        exec('ls', (error, stdout, stderr) => {
+        let command = "certbot certificates";
+        exec('command', (error, stdout, stderr) => {
             if (error) {
                 console.error(`exec error: ${error}`);
-                console.log('1======')
             return;
             }
                 // console.log(`stdout: ${stdout}`);
