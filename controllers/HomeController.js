@@ -31,7 +31,7 @@ exports.index = async (req, res, next) => {
                     let name_end_pos = element.indexOf(" Domains:");
                     let name_result1 = element.slice(name_start_pos, name_end_pos);
                     let name_result2 =  name_result1.replace('Certificate Name: ', '')
-                    let cert_name = name_result2.replace(' ', '');
+                    let cert_name = name_result2.replaceAll(' ', '');
 
                     // cert domain
                     let domain_start_pos = element.indexOf("Domains: ");
