@@ -14,6 +14,7 @@ exports.index = async (req, res, next) => {
                 // console.log('2======')
                 // console.error(`stderr: ${stderr}`);
                 data = JSON.stringify(stdout);
+                console.log(data)
         });
 
         res.render('index', { title: 'Express', data: data });
