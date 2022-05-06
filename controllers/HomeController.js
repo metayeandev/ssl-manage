@@ -12,9 +12,11 @@ exports.index = async (req, res, next) => {
             return;
             }
                 // let text = "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Found the following certs: Certificate Name: tcmv.cloud Domains: *.tcmv.cloud tcmv.cloud Expiry Date: 2022-08-03 09:22:16+00:00 (VALID: 89 days) Certificate Path: /etc/letsencrypt/live/tcmv.cloud/fullchain.pem Private Key Path: /etc/letsencrypt/live/tcmv.cloud/privkey.pem Certificate Name: therunway.co Domains: *.therunway.co therunway.co Expiry Date: 2022-08-04 06:19:43+00:00 (VALID: 89 days) Certificate Path: /etc/letsencrypt/live/therunway.co/fullchain.pem Private Key Path: /etc/letsencrypt/live/therunway.co/privkey.pem - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -";
-                let res_stdout_str = stdout;
-                let cut_start_pos = res_stdout_str.indexOf("Certificate");
-                let result1 = res_stdout_str.slice(cut_start_pos - 0);
+                let res_stdout_str1 = JSON.stringify(stdout);
+                let res_stdout_str2 = res_stdout_str1.replaceAll('\\n', '');
+
+                let cut_start_pos = res_stdout_str2.indexOf("Certificate");
+                let result1 = res_stdout_str2.slice(cut_start_pos - 0);
                 let cut_end_pos = result1.lastIndexOf("privkey.pem");
                 let result2 = result1.slice(0, cut_end_pos)+'privkey.pem';
                 let result3 = result2.replaceAll('Certificate Name', 'MARK_Certificate Name');
