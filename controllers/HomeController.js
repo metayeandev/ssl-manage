@@ -15,13 +15,11 @@ exports.index = async (req, res, next) => {
                 let res_stdout_str = stdout;
                 let cut_start_pos = res_stdout_str.indexOf("Certificate");
                 let result1 = res_stdout_str.slice(cut_start_pos - 0);
-                let cut_end_pos = result1.indexOf("pem -");
-                let result2 = result1.slice(0, cut_end_pos + 3);
-
+                let cut_end_pos = result1.lastIndexOf("privkey.pem");
+                let result2 = result1.slice(0, cut_end_pos)+'privkey.pem';
                 let result3 = result2.replaceAll('Certificate Name', 'MARK_Certificate Name');
                 let result4 = result3.split('MARK_');
                 result4.shift();
-                console.log(JSON.stringify(result4[0]))
 
                 let certs_arr = [];
                 for (let index = 0; index < result4.length; index++) {
