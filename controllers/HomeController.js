@@ -72,6 +72,7 @@ exports.index = async (req, res, next) => {
                         private_key_path: private_key_path,
 
                     }
+                    console.log(cert)
                     certs_arr.push(cert);
                 }
 
