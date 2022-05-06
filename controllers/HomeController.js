@@ -3,6 +3,7 @@ const { exec } = require('node:child_process')
 
 exports.index = async (req, res, next) => {
     try {
+        let data;
         let command = "certbot certificates";
         exec('command', (error, stdout, stderr) => {
             if (error) {
@@ -12,9 +13,7 @@ exports.index = async (req, res, next) => {
                 // console.log(`stdout: ${stdout}`);
                 // console.log('2======')
                 // console.error(`stderr: ${stderr}`);
-                let data = JSON.stringify(stdout);
-                console.log(data)
-
+                data = JSON.stringify(stdout);
         });
 
         res.render('index', { title: 'Express', data: data });
