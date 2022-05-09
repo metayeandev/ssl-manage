@@ -121,10 +121,16 @@ exports.storeCert = async (req, res, next) => {
                 console.error(`exec error: ${error}`);
             return;
             }
-            let res_stdout = stdout;
-            console.log(res_stdout)
+            if(stdout.indexOf('Congratulations') !== -1) {
+                console.log('conrgrat')
+                res.json(stdout);
+                re.end();
+                return
+            }
 
-        });
+            console.log(stdout)
+            res.json(stdout);
+        });!
 
     } catch (error) {
         console.log(error);
