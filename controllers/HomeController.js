@@ -125,8 +125,6 @@ exports.storeCert = async (req, res, next) => {
             console.log(res_stdout)
 
         });
-        res.render('create', { title: 'Express' });
-
 
     } catch (error) {
         console.log(error);
