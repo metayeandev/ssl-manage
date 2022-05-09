@@ -55,7 +55,7 @@ exports.index = async (req, res, next) => {
                     let expired_date_result3 = expired_date_result2.replaceAll(' (VALID', 'MARK_(VALID');
                     let expired_date_result4 = expired_date_result3.split('MARK_');
                     let cert_expired_date = moment(expired_date_result4[0], 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD');
-                    let cert_expired_time = moment(expired_date_result4[0], 'YYYY-MM-DD HH:mm:ssZZ').format('HH:mmZZ');
+                    let cert_expired_time = moment(expired_date_result4[0], 'YYYY-MM-DD HH:mm:ssZZ').format('HH:mm:ssZZ');
 
                     // cert certificate path
                     let cert_path_start_pos = element.indexOf("Certificate Path: ");
