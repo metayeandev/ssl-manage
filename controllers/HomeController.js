@@ -38,7 +38,14 @@ exports.index = async (req, res, next) => {
                     let domain_end_pos = element.indexOf(" Expiry Date:");
                     let domain_result1 = element.slice(domain_start_pos, domain_end_pos);
                     let domain_result2 =  domain_result1.replace('Domains: ', '')
-                    let cert_domain = domain_result2.split(' ');
+                    let cert_domain_arr = domain_result2.split(' ');
+                    let cert_domain = [];
+                    for (let i = 0; i < cert_domain_arr.length; i++) {
+                        const element = cert_domain_arr[i];
+                        if (element !== '') {
+                            cert_domain.push();
+                        }
+                    }
 
                     // cert expired date
                     let expired_date_start_pos = element.indexOf("Expiry Date: ");
