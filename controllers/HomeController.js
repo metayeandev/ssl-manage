@@ -138,7 +138,7 @@ exports.deleteCert = async (req, res, next) => {
         let input = req.body;
         let domain = input.domain
         
-        let command1 = 'sudo rm \
+        let command1 = 'sudo rm -rf \
         /etc/letsencrypt/archives/'+ domain +' \
         /etc/letsencrypt/live/'+ domain;
 
