@@ -107,15 +107,14 @@ exports.create = async (req, res, next) => {
 exports.storeCert = async (req, res, next) => {
     try {
         let input = req.body;
-        let domain = {
-            domain: input.domain,
-            subdomain: '*.' + input.domain
-        }
+        let domain = input.domain
         
         let command = 'sudo certbot certonly \
         --server https://acme-v02.api.letsencrypt.org/directory \
         --manual --preferred-challenges dns \
-        -d *.test.com -d test.com'
+        -d *.'+ domain +' -d '+ domain
+
+        console.log(command)
         
         await exec(command, (error, stdout, stderr) => {
             if (error) {
@@ -127,6 +126,40 @@ exports.storeCert = async (req, res, next) => {
 
         });
         res.render('create', { title: 'Express' });
+
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+exports.deleteCert = async (req, res, next) => {
+    try {
+        let input = req.body;
+        let domain = input.domain
+        
+        let command1 = 'sudo rm \
+        /etc/letsencrypt/archives/'+ domain +' \
+        /etc/letsencrypt/live/'+ domain;
+
+        let command2 = 'sudo rm /etc/letsencrypt/renewal/'+ domain + '.conf';
+        
+        await exec(command1, (error1, stdout1, stderr1) => {
+            if (error) {
+                console.error(`exec error: ${error1}`);
+            return;
+            }
+            console.log(stdout1)
+            await exec(command2, (error2, stdout2, stderr2) => {
+                if (error) {
+                    console.error(`exec error: ${error2}`);
+                return;
+                }
+                console.log(stdout2)
+
+                res.redirect('/');
+            });
+        });
 
 
     } catch (error) {

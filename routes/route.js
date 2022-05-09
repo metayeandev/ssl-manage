@@ -7,6 +7,7 @@ var HomeController = require('./../controllers/HomeController');
 router.get('/', HomeController.index);
 router.get('/create', HomeController.create);
 router.post('/storeCert', HomeController.storeCert);
+router.post('/deleteCert', HomeController.deleteCert);
 
 
 module.exports = router;
