@@ -43,7 +43,7 @@ exports.index = async (req, res, next) => {
                     for (let i = 0; i < cert_domain_arr.length; i++) {
                         const element = cert_domain_arr[i];
                         if (element !== '') {
-                            cert_domain.push();
+                            cert_domain.push(element);
                         }
                     }
 
