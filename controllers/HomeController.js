@@ -144,13 +144,13 @@ exports.deleteCert = async (req, res, next) => {
 
         let command2 = 'sudo rm /etc/letsencrypt/renewal/'+ domain + '.conf';
         
-        await exec(command1, (error1, stdout1, stderr1) => {
+        await exec(command1, async (error1, stdout1, stderr1) => {
             if (error) {
                 console.error(`exec error: ${error1}`);
             return;
             }
             console.log(stdout1)
-            await exec(command2, (error2, stdout2, stderr2) => {
+            await exec(command2, async (error2, stdout2, stderr2) => {
                 if (error) {
                     console.error(`exec error: ${error2}`);
                 return;
