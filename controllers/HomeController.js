@@ -139,7 +139,7 @@ exports.deleteCert = async (req, res, next) => {
         let domain = input.domain
         
         let command1 = 'sudo rm -rf \
-        /etc/letsencrypt/archives/'+ domain +' \
+        /etc/letsencrypt/archive/'+ domain +' \
         /etc/letsencrypt/live/'+ domain;
 
         let command2 = 'sudo rm /etc/letsencrypt/renewal/'+ domain + '.conf';

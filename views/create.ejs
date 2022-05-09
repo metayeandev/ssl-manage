@@ -39,6 +39,21 @@
                 domain: domain,
             }
             console.log(data)
+            var settings = {
+                "url": "http://localhost:1000/storeCert",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "domain": data.domain
+                }),
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
         }
 
 
