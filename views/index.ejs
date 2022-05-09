@@ -109,7 +109,7 @@
         let cert_info = JSON.parse(cert);
         $('#modal-info-cert-name').text(cert_info.name);
         $('#modal-info-domain').text(cert_info.domain);
-        $('#modal-info-expired').text(cert_info.expired.date + ' ' + cert_info.expired);
+        $('#modal-info-expired').text(cert_info.expired.date + ' ' + cert_info.expired.time);
         $('#modal-info-cert-path').text(cert_info.certificate_path);
         $('#modal-info-private-key-path').text(cert_info.private_key_path);
 
